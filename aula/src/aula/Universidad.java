@@ -25,8 +25,7 @@ public class Universidad {
     }
     
     public Universidad(String nombre, String siglas){
-        this();
-        this.nombre = nombre;
+        this(nombre);
         this.siglas = siglas;
     }
       
