@@ -8,29 +8,19 @@ package aula;
  *
  * @author edisoncor
  */
-public class Facultad {
-    
+public class Unidad {
     
     private String nombre;
-    private String siglas;
+    private Integer numeroHoras;
+    private int orden;
     
-    
-    private Universidad universidad;
-    private Carrera[] carreraList;
-    
-    public Facultad(){
-        this.carreraList = new Carrera[6];
-    }
-
-    public Facultad(String nombre) {
-        this();
+    public Unidad(String nombre){
         this.nombre = nombre;
     }
     
-    
     @Override
     public String toString(){
-        return "Facultad: " + this.nombre;
+        return "Unidad: " + this.nombre;
     }
     
 }
