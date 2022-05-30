@@ -4,6 +4,9 @@
  */
 package aula;
 
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  *
  * @author edisoncor
@@ -14,6 +17,13 @@ public class Asignatura {
     private Integer numeroHoras;
     
     private Ciclo ciclo;
+    private List<Unidad> unidadList;
+
+    public Asignatura() {
+        unidadList = new LinkedList<>();
+    }
+    
+    
     
     @Override
     public String toString(){
