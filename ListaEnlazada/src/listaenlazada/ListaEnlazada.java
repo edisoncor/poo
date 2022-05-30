@@ -20,12 +20,21 @@ public class ListaEnlazada {
       
         
         Lista le = new Lista();
-        le.agregarPrimerNodo(n1);
+        le.agregar(n1);
+        System.out.println(le);
         le.agregar(n2);
+        System.out.println(le);
         le.agregar(n3);
+        System.out.println(le);
         le.agregar(new Nodo(45));
+        System.out.println(le);
         le.agregar(new Nodo(76));
         System.out.println(le);
+        le.insertar(new Nodo(333), 2);
+        System.out.println(le);
+        
+        le.eliminar(2);
+        System.out.println(le); 
     }
     
 }

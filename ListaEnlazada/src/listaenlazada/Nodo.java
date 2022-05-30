@@ -19,7 +19,7 @@ public class Nodo {
 
     @Override
     public String toString() {
-        return " " + dato + ' ';
+        return "" + dato ;
     }
     
     
