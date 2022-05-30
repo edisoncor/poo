@@ -25,5 +25,10 @@ public class Estudiante extends Persona{
     public String toString(){
         return this.nacionalidad + " - " + super.toString();
     }
+
+    @Override
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
     
 }

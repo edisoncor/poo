@@ -4,6 +4,7 @@
  */
 package aula;
 
+
 /**
  *
  * @author edisoncor
@@ -16,33 +17,55 @@ public class Aula {
     public static void main(String[] args) {
         // TODO code application logic here
         Universidad universidad; //declarando un objeto
-        universidad = new Universidad("Universidad Nacional de Loja", "UNL");
-        System.out.println(universidad);
+        universidad = new Universidad("Univeridad Nacional de Loja", "UNL");
         
         Facultad facultad = new Facultad("Energia");
-        System.out.println(facultad);
         
         Carrera computacion = new Carrera("Computación");
-        System.out.println(computacion);
         Carrera sistemas = new Carrera("Sistemas");
-        System.out.println(sistemas);
         
         Estudiante estudiante = new Estudiante("Juan", "Perez");
-        System.out.println(estudiante);
         Estudiante estudiante2 = new Estudiante("Ecuatoriana", "Jose", "Pardo");
-        System.out.println(estudiante2);
         
         Docente docente = new Docente(40, "Edison", "Coronel");
-        System.out.println(docente);
         
         Asignatura poo = new Asignatura();
-        System.out.println(poo);
         
         Unidad unidad = new Unidad("Clases y objetos");
-        System.out.println(unidad);
         
         Componente componente = new Componente("Actividad Práctica Experimental");
-        System.out.println(componente);
+        
+//        ======================================================================
+        
+        universidad.setNombre("Universidad Nacional de Loja");
+        universidad.getFacultadList().add(facultad);
+        facultad.setUniversidad(universidad);
+        facultad.getCarreraList().add(sistemas);
+        facultad.getCarreraList().add(computacion);
+        sistemas.setFacultad(facultad);
+        computacion.setFacultad(facultad);
+        computacion.getCicloList().add(new Ciclo(1, computacion));
+        computacion.getCicloList().add(new Ciclo(2, computacion));
+        computacion.getCicloList().add(new Ciclo(3, computacion));
+        computacion.getCicloList().add(new Ciclo(4, computacion));
+        computacion.getCicloList().add(new Ciclo(5));
+        computacion.getCicloList().add(new Ciclo(6));
+        computacion.getCicloList().add(new Ciclo(7));
+        computacion.getCicloList().add(new Ciclo(8));
+        computacion.getCicloList().add(new Ciclo(9));
+        
+        
+        computacion.getFacultad().getUniversidad().setNombre("Nuevo nombre");
+        
+        System.out.println(universidad);
+        System.out.println(universidad.getFacultadList().get(0).getCarreraList().get(1).getCicloList().get(1));
+        
+        Docente d = new Docente("Edison", "Coronel");
+        System.out.println(d);
+        d.setApellido("Coronel Romero");
+        d.setNombre("Edison L");
+        System.out.println(d);
+       
         
     }
     

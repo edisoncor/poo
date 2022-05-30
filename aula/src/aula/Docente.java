@@ -20,9 +20,24 @@ public class Docente extends Persona{
         super(nombre, apellido);
         this.dedicacion = dedicacion;
     }
+
+    public Integer getDedicacion() {
+        return dedicacion;
+    }
+
+    public void setDedicacion(Integer dedicacion) {
+        this.dedicacion = dedicacion;
+    }
+    
+    @Override
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
     
     @Override
     public String toString(){
         return super.toString() + ": "+ this.dedicacion + " horas";
     }
+
+    
 }
