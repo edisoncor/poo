@@ -4,6 +4,8 @@
  */
 package aula;
 
+import java.util.List;
+
 /**
  *
  * @author edisoncor
@@ -11,6 +13,7 @@ package aula;
 public class Estudiante extends Persona{
 
     private String nacionalidad;
+    private List<Matricula> matriculaList;
 
     public Estudiante(String nombre, String apellido) {
         super(nombre, apellido);
@@ -20,6 +23,24 @@ public class Estudiante extends Persona{
         super(nombre, apellido);
         this.nacionalidad = nacionalidad;
     }
+
+    public String getNacionalidad() {
+        return nacionalidad;
+    }
+
+    public void setNacionalidad(String nacionalidad) {
+        this.nacionalidad = nacionalidad;
+    }
+
+    public List<Matricula> getMatriculaList() {
+        return matriculaList;
+    }
+
+    public void setMatriculaList(List<Matricula> matriculaList) {
+        this.matriculaList = matriculaList;
+    }
+    
+    
     
     @Override
     public String toString(){
