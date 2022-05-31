@@ -4,6 +4,8 @@
  */
 package aula;
 
+import java.util.List;
+
 /**
  *
  * @author edisoncor
@@ -11,7 +13,8 @@ package aula;
 public class Docente extends Persona{
     
     private Integer dedicacion;
-
+    private List<Asignacion> asignacionList;
+    
     public Docente(String nombre, String apellido) {
         super(nombre, apellido);
     }
@@ -27,6 +30,14 @@ public class Docente extends Persona{
 
     public void setDedicacion(Integer dedicacion) {
         this.dedicacion = dedicacion;
+    }
+
+    public List<Asignacion> getAsignacionList() {
+        return asignacionList;
+    }
+
+    public void setAsignacionList(List<Asignacion> asignacionList) {
+        this.asignacionList = asignacionList;
     }
     
     @Override

@@ -24,16 +24,27 @@ public class Aula {
         Carrera computacion = new Carrera("Computación");
         Carrera sistemas = new Carrera("Sistemas");
         
-        Estudiante estudiante = new Estudiante("Juan", "Perez");
+        Estudiante estudiante = new Estudiante("Jose", "Guaman");
         Estudiante estudiante2 = new Estudiante("Ecuatoriana", "Jose", "Pardo");
         
         Docente docente = new Docente(40, "Edison", "Coronel");
+        Docente docente2 = new Docente(40, "Juan", "Perez");
+        Docente docente3 = new Docente(40, "María", "Carrión");
         
-        Asignatura poo = new Asignatura();
+        Ciclo ciclo2 = new Ciclo(2, computacion);
         
-        Unidad unidad = new Unidad("Clases y objetos");
+        Asignatura poo = new Asignatura("Programación Orientada a objetos", ciclo2);
+        Asignatura disenio = new Asignatura("Diseño de circuitos", ciclo2);
+        Asignatura analisis = new Asignatura("Análisis matemático", ciclo2);
         
-        Componente componente = new Componente("Actividad Práctica Experimental");
+ 
+        
+        Unidad unidad = new Unidad("Clases y objetos");   
+        poo.getUnidadList().add(unidad);
+        
+        Componente componente1 = new Componente("Actividad Práctica Experimental");
+        Componente componente2 = new Componente("Actividad autónoma");
+        Componente componente3 = new Componente("Actividad Contacto con el Docente");
         
 //        ======================================================================
         
@@ -57,15 +68,24 @@ public class Aula {
         
         computacion.getFacultad().getUniversidad().setNombre("Nuevo nombre");
         
-        System.out.println(universidad);
-        System.out.println(universidad.getFacultadList().get(0).getCarreraList().get(1).getCicloList().get(1));
         
         Docente d = new Docente("Edison", "Coronel");
-        System.out.println(d);
         d.setApellido("Coronel Romero");
         d.setNombre("Edison L");
-        System.out.println(d);
-       
+        
+        Paralelo pa = new Paralelo("A");
+        Paralelo pb = new Paralelo("B");
+        Paralelo pc = new Paralelo("C");
+        
+        Asignacion as = new Asignacion(docente, pa, poo);
+        Asignacion as2 = new Asignacion(docente2, pb, poo);
+        Asignacion as3 = new Asignacion(docente2, pb, analisis);
+        Asignacion as4 = new Asignacion(docente3, pc, poo);
+ 
+        Matricula m = new Matricula(123, estudiante);
+        m.getAsignacionList().add(as2);
+        m.getAsignacionList().add(as3);
+        System.out.println(m);
         
     }
     
