@@ -79,13 +79,41 @@ public class Aula {
         
         Asignacion as = new Asignacion(docente, pa, poo);
         Asignacion as2 = new Asignacion(docente2, pb, poo);
-        Asignacion as3 = new Asignacion(docente2, pb, analisis);
+        Asignacion as3 = new Asignacion(docente3, pc, analisis);
         Asignacion as4 = new Asignacion(docente3, pc, poo);
  
         Matricula m = new Matricula(123, estudiante);
         m.getAsignacionList().add(as2);
         m.getAsignacionList().add(as3);
-        System.out.println(m);
+        as2.getMatriculaList().add(m);
+        as3.getMatriculaList().add(m);
+
+        Matricula m2 = new Matricula(124, estudiante2);
+        m2.getAsignacionList().add(as2);
+        as2.getMatriculaList().add(m2);
+
+        
+        
+        Actividad act = new Actividad("Git y sus ventajas", "Git");
+        Actividad act2 = new Actividad("Repaso de gitflow", "GitFlow");
+        
+        as2.agregarActividad(act);
+        as2.agregarActividad(act2);
+       
+        
+        System.out.println(as2);
+        as2.listarAlumnos();
+        System.out.println(as3);
+        as3.listarAlumnos();
+        
+        System.out.println("\n Asignaturas de: " + m.getEstudiante());
+        m.listarAsignaturas();
+        System.out.println("\n Asignaturas de: " + m2.getEstudiante());
+        m2.listarAsignaturas();
+        
+        
+        System.out.println(act);
+        as3.listarUnidades();
         
     }
     
