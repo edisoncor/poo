@@ -4,6 +4,7 @@
  */
 package aula;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,13 +18,22 @@ public class Matricula {
 
     private Estudiante estudiante;
     private List<Asignacion> asignacionList;
+    private List<Actividad> actividadList;
 
     public Matricula(Integer numero, Estudiante estudiante) {
         this.numero = numero;
         this.estudiante = estudiante;
         asignacionList = new LinkedList<>();
+        actividadList = new LinkedList<>();
     }
 
+    public void listarAsignaturas(){
+        for (Iterator<Asignacion> iterator = asignacionList.iterator(); iterator.hasNext();) {
+            Asignacion asi = iterator.next();
+            System.out.println(asi.getAsignatura() + ": " + asi.getParalelo().getNombre());
+        }
+    }
+    
     public Integer getNumero() {
         return numero;
     }
@@ -46,6 +56,14 @@ public class Matricula {
 
     public void setAsignacionList(List<Asignacion> asignacionList) {
         this.asignacionList = asignacionList;
+    }
+
+    public List<Actividad> getActividadList() {
+        return actividadList;
+    }
+
+    public void setActividadList(List<Actividad> actividadList) {
+        this.actividadList = actividadList;
     }
 
     @Override

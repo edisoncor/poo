@@ -4,6 +4,7 @@
  */
 package aula;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -12,18 +13,54 @@ import java.util.List;
  */
 public class Asignacion {
     
-    private Docente docente;
-    private Paralelo paralelo;
-    private Asignatura asignatura;
+    // Atributos al inicio
     
+    
+    //Relaciones alfabetico
+    private List<Actividad> actividadList;
+    private Asignatura asignatura;
+    private Docente docente;
     private List<Matricula> matriculaList;
+    private Paralelo paralelo;
 
+    
+    //Constructores
     public Asignacion(Docente docente, Paralelo paralelo, Asignatura asignatura) {
         this.docente = docente;
         this.paralelo = paralelo;
         this.asignatura = asignatura;
+        this.actividadList = new LinkedList<>();
+        this.matriculaList = new LinkedList<>();
     }
 
+    // operaciones
+    
+    /**
+     * Agregar una actividad a los estudiantes matriculados en la asignatura
+     * @param actividad Que debe contener nombre y descripción
+     */
+    public void agregarActividad(Actividad actividad){
+        for (Matricula matricula : matriculaList) {
+            matricula.getActividadList().add(actividad);
+        }
+    }
+    
+    public void listarAlumnos(){
+        for (Matricula matricula : matriculaList) {
+            System.out.println(matricula.getEstudiante());
+        }
+    }
+    
+    public void listarUnidades(){
+        for (Unidad unidad : asignatura.getUnidadList()) {
+            System.out.println(unidad);
+        }
+    }
+    
+    
+    
+    // set y get  seccion penultima
+    
     public Docente getDocente() {
         return docente;
     }
@@ -56,8 +93,8 @@ public class Asignacion {
         this.matriculaList = matriculaList;
     }
     
+    //toString siempre al final
     
-
     @Override
     public String toString() {
         return "\n Asignacion{" + "docente=" + docente + ", " + paralelo + ", asignatura=" + asignatura + '}';

@@ -40,12 +40,7 @@ public class Estudiante extends Persona{
         this.matriculaList = matriculaList;
     }
     
-    
-    
-    @Override
-    public String toString(){
-        return this.nacionalidad + " - " + super.toString();
-    }
+  
 
     @Override
     public void setNombre(String nombre) {
