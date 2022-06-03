@@ -8,7 +8,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- *
+ * Clase Asignación que permite vincular un docente con un 
+ * paralelo y una asignatura
  * @author edisoncor
  */
 public class Asignacion {
@@ -25,6 +26,13 @@ public class Asignacion {
 
     
     //Constructores
+    
+    /**
+     * Constructor de asignación
+     * @param docente Docente al cual se le va asignar la asignatura
+     * @param paralelo El paralelo de la asgnacióbn
+     * @param asignatura La asignatura del docente en determinado paralelo
+     */
     public Asignacion(Docente docente, Paralelo paralelo, Asignatura asignatura) {
         this.docente = docente;
         this.paralelo = paralelo;
@@ -40,11 +48,16 @@ public class Asignacion {
      * @param actividad Que debe contener nombre y descripción
      */
     public void agregarActividad(Actividad actividad){
+        Unidad unidad = getUnidades().get(0);
+        actividad.setUnidad(unidad);
         for (Matricula matricula : matriculaList) {
             matricula.getActividadList().add(actividad);
         }
     }
     
+    /**
+     * Listado en consola los estudiantes de determinada asignación
+     */
     public void listarAlumnos(){
         for (Matricula matricula : matriculaList) {
             System.out.println(matricula.getEstudiante());
@@ -52,15 +65,24 @@ public class Asignacion {
     }
     
     public void listarUnidades(){
-        for (Unidad unidad : asignatura.getUnidadList()) {
+        for (Unidad unidad : getUnidades()) {
             System.out.println(unidad);
         }
     }
     
+     // set y get  seccion penultima
+    public List<Unidad> getUnidades(){
+        return asignatura.getUnidadList();
+    }
     
-    
-    // set y get  seccion penultima
-    
+    public List<Actividad> getActividadList() {    
+        return actividadList;
+    }
+
+    public void setActividadList(List<Actividad> actividadList) {    
+        this.actividadList = actividadList;
+    }
+
     public Docente getDocente() {
         return docente;
     }

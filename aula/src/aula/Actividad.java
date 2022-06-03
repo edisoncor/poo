@@ -10,17 +10,42 @@ package aula;
  */
 public class Actividad {
 
+    private Double calificacion;
     private String descripcion;
     private String nombre;
     
     private Asignacion asignacion;
     private Matricula matricula;
+    private Unidad unidad;
+    private Componente componente;
 
+    public Actividad() {
+    }
+    
     public Actividad(String descripcion, String nombre) {
+        this();
         this.descripcion = descripcion;
         this.nombre = nombre;
     }
 
+    public Actividad(String descripcion, String nombre, Unidad unidad) {
+        this(descripcion, nombre);
+        this.unidad = unidad;
+    }
+
+    public Actividad(String descripcion, String nombre, Unidad unidad, Componente componente) {
+        this(descripcion, nombre, unidad);
+        this.componente = componente;
+    }
+
+    public Double getCalificacion() {
+        return calificacion;
+    }
+
+    public void setCalificacion(Double calificacion) {
+        this.calificacion = calificacion;
+    }
+    
     public String getDescripcion() {
         return descripcion;
     }
@@ -53,11 +78,28 @@ public class Actividad {
         this.matricula = matricula;
     }
 
+    public Unidad getUnidad() {
+        return unidad;
+    }
+
+    public void setUnidad(Unidad unidad) {
+        this.unidad = unidad;
+    }
+
+    public Componente getComponente() {
+        return componente;
+    }
+
+    public void setComponente(Componente componente) {
+        this.componente = componente;
+    }
+
     @Override
     public String toString() {
-        return "Actividad{" + "descripcion=" + descripcion + ", nombre=" + nombre + ", asignacion=" + asignacion + ", matricula=" + matricula + '}';
+        return "Actividad{" + "descripcion=" + descripcion + ", nombre=" + nombre + ", asignacion=" + asignacion + ", matricula=" + matricula + ", unidad=" + unidad + ", componente=" + componente + '}';
     }
-    
+
+   
     
     
 }
