@@ -16,7 +16,7 @@ public class Aula {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Universidad universidad; //declarando un objeto
+        Universidad universidad; //declarando un objeto universidad
         universidad = new Universidad("Univeridad Nacional de Loja", "UNL");
         
         Facultad facultad = new Facultad("Energia");
@@ -41,10 +41,12 @@ public class Aula {
         
         Unidad unidad = new Unidad("Clases y objetos");   
         poo.getUnidadList().add(unidad);
+        poo.getUnidadList().add(new Unidad("Interfaces de usuario"));
         
         Componente componente1 = new Componente("Actividad Práctica Experimental");
         Componente componente2 = new Componente("Actividad autónoma");
         Componente componente3 = new Componente("Actividad Contacto con el Docente");
+        Componente componente4 = new Componente("Evaluación");
         
 //        ======================================================================
         
@@ -69,9 +71,9 @@ public class Aula {
         computacion.getFacultad().getUniversidad().setNombre("Nuevo nombre");
         
         
-        Docente d = new Docente("Edison", "Coronel");
-        d.setApellido("Coronel Romero");
-        d.setNombre("Edison L");
+        Docente docente1 = new Docente("Edison", "Coronel");
+        docente1.setApellido("Coronel Romero");
+        docente1.setNombre("Edison L");
         
         Paralelo pa = new Paralelo("A");
         Paralelo pb = new Paralelo("B");
@@ -96,6 +98,8 @@ public class Aula {
         
         Actividad act = new Actividad("Git y sus ventajas", "Git");
         Actividad act2 = new Actividad("Repaso de gitflow", "GitFlow");
+        act.setComponente(componente1);
+        act2.setComponente(componente2);
         
         as2.agregarActividad(act);
         as2.agregarActividad(act2);
