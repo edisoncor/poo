@@ -13,9 +13,20 @@ public final class Circulo extends FiguraGeometrica{
     private Double radio;
     public static final Float PI = 3.141592f; 
 
+    
+    // Constructor
+    // Mismo nombre que la clase
+    // No tiene  tipo de dato de devoluciónb
+    // inicializar el objeto
+    public Circulo(Double radio) {
+        this.numeroLados = 0;
+        this.radio = radio;
+    }
+    
+    
     @Override
-    public void calcularArea() {
-        System.out.println("Cálculo del área de círculo");
+    public Double calcularArea() {
+        return PI * radio * radio;
     }
 
     public Double getRadio() {

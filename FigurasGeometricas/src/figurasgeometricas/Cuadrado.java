@@ -10,9 +10,25 @@ package figurasgeometricas;
  */
 public class Cuadrado extends FiguraGeometrica{
 
-    @Override
-    public void calcularArea() {
-        System.out.println("Cálculo del área de cuadrado");
+    private Float lado;
+
+    public Cuadrado(Float lado) {
+        this.lado = lado;
+        this.numeroLados = 4;
     }
+    
+    @Override
+    public Double calcularArea() {
+        return lado * lado.doubleValue();
+    }
+
+    public Float getLado() {
+        return lado;
+    }
+
+    public void setLado(Float lado) {
+        this.lado = lado;
+    }
+    
     
 }
