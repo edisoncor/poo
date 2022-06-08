@@ -10,6 +10,18 @@ package figurasgeometricas;
  */
 public abstract class FiguraGeometrica {
     
-    public abstract void calcularArea();
+    protected Integer numeroLados;
+    
+    
+    // Método abstracto no tiene cuerpo
+    // Definición del método
+    // Implementarse en las subclases
+    public abstract Double calcularArea();
+
+    public Integer getNumeroLados() {
+        return numeroLados;
+    }
+    
+    
     
 }
