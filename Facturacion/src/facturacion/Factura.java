@@ -29,18 +29,25 @@ public class Factura {
         descripcionList = new LinkedList<>();
     }
     
-    public void calcularIVA(){
-        this.valorIva = this.subTotal * this.empresa.getPorcentajeIVA() / 100;
+    public void agregarProducto(Producto producto, Integer cantidad){
+        this.descripcionList.add(new Descripcion(cantidad, this, producto));
+        calcularSubTotal();
     }
     
-    public void calcularSubTotal(){
+    protected void calcularIVA(){
+        this.valorIva = this.subTotal * this.empresa.getPorcentajeIVA() / 100;
+        this.calcularTotal();
+    }
+    
+    protected void calcularSubTotal(){
         this.subTotal = 0f;
         for (Descripcion descripcion : descripcionList) {
             this.subTotal += descripcion.getValorTotal();
         }
+        this.calcularIVA();
     }
     
-    public void calcularTotal(){
+    protected void calcularTotal(){
         this.total = this.subTotal + this.valorIva;
     }
     
