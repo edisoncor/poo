@@ -18,10 +18,7 @@ public class Main {
         Empresa empresa = new Empresa("123", "Tienda de la esquina", "1123001", 12);
         factura.setEmpresa(empresa);
         Producto termo = new Producto("Termo", 10f, 12);
-        factura.getDescripcionList().add(new Descripcion(3, factura, termo));
-        factura.calcularSubTotal();
-        factura.calcularIVA();        
-        factura.calcularTotal();
+        factura.agregarProducto(termo, 3); 
         System.out.println(factura.getTotal());
         
     }
