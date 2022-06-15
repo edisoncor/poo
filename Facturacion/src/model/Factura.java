@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package facturacion;
+package model;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -27,6 +27,29 @@ public class Factura {
 
     public Factura() {
         descripcionList = new LinkedList<>();
+        subTotal = 0f;
+        valorIva = 0f;
+        total = 0f;
+    }
+
+    public Factura(String numero) {
+        this();
+        this.numero = numero;
+    }
+
+    public Factura(String numero, Empresa empresa) {
+        this(numero);
+        this.empresa = empresa;
+    }
+
+    public Factura(String numero, Cliente cliente) {
+        this(numero);
+        this.cliente = cliente;
+    }
+
+    public Factura(String numero, Cliente cliente, Empresa empresa) {
+        this(numero, cliente);
+        this.empresa = empresa;
     }
     
     public void agregarProducto(Producto producto, Integer cantidad){
@@ -109,6 +132,11 @@ public class Factura {
 
     public void setDescripcionList(List<Descripcion> descripcionList) {
         this.descripcionList = descripcionList;
+    }
+
+    @Override
+    public String toString() {
+        return "Factura{" + "numero=" + numero + '}';
     }
     
     
