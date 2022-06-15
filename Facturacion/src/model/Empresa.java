@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package facturacion;
+package model;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -20,7 +21,12 @@ public class Empresa {
     private List<Factura> facturaList;
     private Direccion direccion;
 
+    public Empresa() {
+        facturaList = new LinkedList<>();
+    }
+    
     public Empresa(String autoriazacion, String nombre, String ruc) {
+        this();
         this.autorizacion = autoriazacion;
         this.nombre = nombre;
         this.ruc = ruc;
@@ -30,7 +36,6 @@ public class Empresa {
         this(autoriazacion, nombre, ruc);
         this.porcentajeIVA = porcentajeIVA;
     }
-    
     
 
     public String getAutorizacion() {
@@ -79,6 +84,11 @@ public class Empresa {
 
     public void setPorcentajeIVA(Integer porcentajeIVA) {
         this.porcentajeIVA = porcentajeIVA;
+    }
+
+    @Override
+    public String toString() {
+        return nombre;
     }
     
     
