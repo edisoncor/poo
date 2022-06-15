@@ -4,6 +4,9 @@
  */
 package model;
 
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  *
  * @author edisoncor
@@ -14,7 +17,24 @@ public class Persona {
     private String identificacion;
     private String nombre;
     private String observacion;
+    
 
+
+    public Persona() {
+    }
+
+    public Persona(String apellido, String nombre) {
+        this();
+        this.apellido = apellido;
+        this.nombre = nombre;
+    }
+
+    
+    public Persona(String apellido, String identificacion, String nombre) {
+        this(apellido, nombre);
+        this.identificacion = identificacion;
+    }
+    
     public String getApellido() {
         return apellido;
     }
@@ -49,11 +69,10 @@ public class Persona {
 
     @Override
     public String toString() {
-        return "Persona{" + "apellido=" + apellido + ", identificacion=" + identificacion + ", nombre=" + nombre + ", observacion=" + observacion + '}';
+        return apellido + " " + nombre;
     }
     
-    
-    
+ 
      
    
 }
