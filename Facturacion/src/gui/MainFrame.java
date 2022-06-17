@@ -15,6 +15,9 @@ import model.Producto;
  */
 public class MainFrame extends javax.swing.JFrame {
 
+    private DiaEmpresa diaEmpresa;
+    private DiaFactura diaFactura;
+    
     /**
      * Creates new form MainFrame
      */
@@ -34,12 +37,16 @@ public class MainFrame extends javax.swing.JFrame {
         modelListEmpresa = new gui.ModelListEmpresa();
         modelListFactura = new gui.ModelListFactura();
         modelTableDescripcion = new gui.ModelTableDescripcion();
-        jSplitPane1 = new javax.swing.JSplitPane();
-        jSplitPane2 = new javax.swing.JSplitPane();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        sppPrincipal = new javax.swing.JSplitPane();
+        sppLateral = new javax.swing.JSplitPane();
+        panEmpresa = new javax.swing.JPanel();
+        sppEmpresa = new javax.swing.JScrollPane();
         lstEmpresa = new javax.swing.JList<>();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        btnAgregarEmpresa = new javax.swing.JButton();
+        panListfactura = new javax.swing.JPanel();
+        sppfactura = new javax.swing.JScrollPane();
         lstFactura = new javax.swing.JList<>();
+        btnAgregarFactura = new javax.swing.JButton();
         panFactura = new javax.swing.JPanel();
         lblNombreEmpresa = new javax.swing.JLabel();
         lblAutorizacion = new javax.swing.JLabel();
@@ -55,6 +62,7 @@ public class MainFrame extends javax.swing.JFrame {
         txtIdentificacion = new javax.swing.JTextField();
         lblDireccionCliente = new javax.swing.JLabel();
         txtDireccion = new javax.swing.JTextField();
+        btnAgregarCliente = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblDescripcion = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
@@ -69,10 +77,12 @@ public class MainFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Facturación");
 
-        jSplitPane1.setDividerLocation(200);
+        sppPrincipal.setDividerLocation(200);
 
-        jSplitPane2.setDividerLocation(200);
-        jSplitPane2.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+        sppLateral.setDividerLocation(200);
+        sppLateral.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+
+        panEmpresa.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lstEmpresa.setBorder(javax.swing.BorderFactory.createTitledBorder("Empresas"));
         lstEmpresa.setModel(modelListEmpresa);
@@ -81,9 +91,45 @@ public class MainFrame extends javax.swing.JFrame {
                 lstEmpresaMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(lstEmpresa);
+        sppEmpresa.setViewportView(lstEmpresa);
 
-        jSplitPane2.setTopComponent(jScrollPane1);
+        btnAgregarEmpresa.setText("+");
+        btnAgregarEmpresa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarEmpresaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panEmpresaLayout = new javax.swing.GroupLayout(panEmpresa);
+        panEmpresa.setLayout(panEmpresaLayout);
+        panEmpresaLayout.setHorizontalGroup(
+            panEmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panEmpresaLayout.createSequentialGroup()
+                .addContainerGap(608, Short.MAX_VALUE)
+                .addComponent(btnAgregarEmpresa)
+                .addContainerGap())
+            .addGroup(panEmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panEmpresaLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(sppEmpresa, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+        panEmpresaLayout.setVerticalGroup(
+            panEmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panEmpresaLayout.createSequentialGroup()
+                .addContainerGap(20, Short.MAX_VALUE)
+                .addComponent(btnAgregarEmpresa)
+                .addContainerGap())
+            .addGroup(panEmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panEmpresaLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(sppEmpresa, javax.swing.GroupLayout.DEFAULT_SIZE, 16, Short.MAX_VALUE)
+                    .addGap(27, 27, 27)))
+        );
+
+        sppLateral.setTopComponent(panEmpresa);
+
+        panListfactura.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lstFactura.setBorder(javax.swing.BorderFactory.createTitledBorder("facturas"));
         lstFactura.setModel(modelListFactura);
@@ -92,11 +138,46 @@ public class MainFrame extends javax.swing.JFrame {
                 lstFacturaMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(lstFactura);
+        sppfactura.setViewportView(lstFactura);
 
-        jSplitPane2.setRightComponent(jScrollPane2);
+        btnAgregarFactura.setText("+");
+        btnAgregarFactura.setEnabled(false);
+        btnAgregarFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarFacturaActionPerformed(evt);
+            }
+        });
 
-        jSplitPane1.setLeftComponent(jSplitPane2);
+        javax.swing.GroupLayout panListfacturaLayout = new javax.swing.GroupLayout(panListfactura);
+        panListfactura.setLayout(panListfacturaLayout);
+        panListfacturaLayout.setHorizontalGroup(
+            panListfacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panListfacturaLayout.createSequentialGroup()
+                .addContainerGap(169, Short.MAX_VALUE)
+                .addComponent(btnAgregarFactura)
+                .addContainerGap())
+            .addGroup(panListfacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panListfacturaLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(sppfactura, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+        panListfacturaLayout.setVerticalGroup(
+            panListfacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panListfacturaLayout.createSequentialGroup()
+                .addContainerGap(478, Short.MAX_VALUE)
+                .addComponent(btnAgregarFactura)
+                .addContainerGap())
+            .addGroup(panListfacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panListfacturaLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(sppfactura, javax.swing.GroupLayout.DEFAULT_SIZE, 461, Short.MAX_VALUE)
+                    .addGap(40, 40, 40)))
+        );
+
+        sppLateral.setRightComponent(panListfactura);
+
+        sppPrincipal.setLeftComponent(sppLateral);
 
         lblNombreEmpresa.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
         lblNombreEmpresa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -122,6 +203,13 @@ public class MainFrame extends javax.swing.JFrame {
 
         lblDireccionCliente.setText("Dirección");
 
+        btnAgregarCliente.setText("+");
+        btnAgregarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarClienteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panClienteLayout = new javax.swing.GroupLayout(panCliente);
         panCliente.setLayout(panClienteLayout);
         panClienteLayout.setHorizontalGroup(
@@ -129,16 +217,21 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(panClienteLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblIdentificacion)
-                    .addComponent(lblNombre)
-                    .addComponent(lblDireccionCliente)
-                    .addComponent(lblApellido))
-                .addGap(18, 18, 18)
-                .addGroup(panClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtApellido)
-                    .addComponent(txtNombre)
-                    .addComponent(txtIdentificacion)
-                    .addComponent(txtDireccion))
+                    .addGroup(panClienteLayout.createSequentialGroup()
+                        .addGroup(panClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblIdentificacion)
+                            .addComponent(lblNombre)
+                            .addComponent(lblDireccionCliente)
+                            .addComponent(lblApellido))
+                        .addGap(18, 18, 18)
+                        .addGroup(panClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
+                            .addComponent(txtNombre)
+                            .addComponent(txtIdentificacion)
+                            .addComponent(txtDireccion)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panClienteLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnAgregarCliente)))
                 .addContainerGap())
         );
         panClienteLayout.setVerticalGroup(
@@ -160,7 +253,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(panClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDireccionCliente)
                     .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAgregarCliente))
         );
 
         jScrollPane3.setBorder(javax.swing.BorderFactory.createTitledBorder("Descripción"));
@@ -278,7 +372,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jSplitPane1.setRightComponent(panFactura);
+        sppPrincipal.setRightComponent(panFactura);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -286,14 +380,15 @@ public class MainFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 844, Short.MAX_VALUE)
+                .addComponent(sppPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 844, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jSplitPane1))
+                .addComponent(sppPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 714, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -303,6 +398,7 @@ public class MainFrame extends javax.swing.JFrame {
         Empresa e = lstEmpresa.getSelectedValue();
         modelListFactura = new ModelListFactura(e);
         lstFactura.setModel(modelListFactura);
+        btnAgregarFactura.setEnabled(true);
     }//GEN-LAST:event_lstEmpresaMouseClicked
 
     private void lstFacturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstFacturaMouseClicked
@@ -313,15 +409,40 @@ public class MainFrame extends javax.swing.JFrame {
                 f.getEmpresa().getAutorizacion() + " RUC: " +
                 f.getEmpresa().getRuc());
         lblNumeroFactura.setText("Número: " + f.getNumero() );
+        lblFecha.setText("Fecha: "+ f.getFecha());
         txtSubTotal.setText("" + f.getSubTotal());
         txtIVA.setText("" + f.getValorIva());
         txtTotal.setText("" + f.getTotal());
     }//GEN-LAST:event_lstFacturaMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
         modelTableDescripcion.agregarDescripcion(new Descripcion(4, lstFactura.getSelectedValue(), new Producto("Ropa", 23f, 120)));
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnAgregarEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEmpresaActionPerformed
+        diaEmpresa = new DiaEmpresa(this, true);
+        diaEmpresa.setVisible(true);
+       
+        Empresa e = diaEmpresa.getEmpresa();
+        if (e != null) {
+            modelListEmpresa.agregarEmpresa(e);
+        }
+    }//GEN-LAST:event_btnAgregarEmpresaActionPerformed
+
+    private void btnAgregarFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarFacturaActionPerformed
+        diaFactura = new DiaFactura(lstEmpresa.getSelectedValue(), this, true);
+        diaFactura.setVisible(true);
+        
+        Factura f = diaFactura.getFactura();
+        if (f != null) {
+            modelListFactura.addElement(f);
+        }
+    }//GEN-LAST:event_btnAgregarFacturaActionPerformed
+
+    private void btnAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarClienteActionPerformed
+        DiaCliente diaCliente = new DiaCliente(this, true);
+        diaCliente.setVisible(true);
+    }//GEN-LAST:event_btnAgregarClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -359,16 +480,15 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregarCliente;
+    private javax.swing.JButton btnAgregarEmpresa;
+    private javax.swing.JButton btnAgregarFactura;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JSplitPane jSplitPane2;
     private javax.swing.JLabel lblApellido;
     private javax.swing.JLabel lblAutorizacion;
     private javax.swing.JLabel lblDireccionCliente;
@@ -384,7 +504,13 @@ public class MainFrame extends javax.swing.JFrame {
     private gui.ModelListFactura modelListFactura;
     private gui.ModelTableDescripcion modelTableDescripcion;
     private javax.swing.JPanel panCliente;
+    private javax.swing.JPanel panEmpresa;
     private javax.swing.JPanel panFactura;
+    private javax.swing.JPanel panListfactura;
+    private javax.swing.JScrollPane sppEmpresa;
+    private javax.swing.JSplitPane sppLateral;
+    private javax.swing.JSplitPane sppPrincipal;
+    private javax.swing.JScrollPane sppfactura;
     private javax.swing.JTable tblDescripcion;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtDireccion;
