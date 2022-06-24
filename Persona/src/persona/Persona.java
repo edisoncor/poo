@@ -26,4 +26,18 @@ public final class Persona {
         // TODO code application logic here
     }
     
+    public class Direccion {
+        
+        private String callePrincipal;
+        
+        public Direccion() {
+        }
+        
+        public enum TipoDireccion {
+                
+        }
+
+        
+    }
+    
 }
