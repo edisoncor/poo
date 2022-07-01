@@ -273,10 +273,7 @@
                                   <Component id="panCliente" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblNombreEmpresa" alignment="0" min="-2" pref="495" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-                                  <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="jPanel1" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>

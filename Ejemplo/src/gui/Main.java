@@ -4,11 +4,7 @@
  */
 package gui;
 
-import java.awt.Color;
-import javax.swing.JOptionPane;
 import model.Docente;
-import model.EstadoCivil;
-import model.Estudiante.NivelEstudio;
 
 /**
  *
