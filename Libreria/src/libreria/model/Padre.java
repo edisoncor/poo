@@ -4,35 +4,37 @@
  */
 package libreria.model;
 
+import java.util.List;
+
 /**
  *
  * @author edisoncor
  */
-public class Libro {
+public class Padre {
     
     private int id;
     
-    private String autor;
     private String nombre;
 
-    public Libro() {
+    private List<Hijo> hijoList;
+    
+    
+    
+    public Padre() {
     }
 
+    public Padre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    
+    
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
-    
-    
-    public String getAutor() {
-        return autor;
-    }
-
-    public void setAutor(String autor) {
-        this.autor = autor;
     }
 
     public String getNombre() {
@@ -43,11 +45,20 @@ public class Libro {
         this.nombre = nombre;
     }
 
-    @Override
-    public String toString() {
-        return "\n Libro{" + "id=" + id + ", autor=" + autor + ", nombre=" + nombre + '}';
+    public List<Hijo> getHijoList() {
+        return hijoList;
     }
 
+    public void setHijoList(List<Hijo> hijoList) {
+        this.hijoList = hijoList;
+    }
+
+    @Override
+    public String toString() {
+        return "Padre{" + "id=" + id + ", nombre=" + nombre + '}';
+    }
+    
+    
     
     
 }

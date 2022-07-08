@@ -12,13 +12,16 @@ import org.hibernate.query.Query;
  *
  * @author edisoncor
  */
-public class DAOComputador extends DAOMain{
+public class DAOPadre extends DAOMain{
     
     public List getList(){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-//        session.beginTransaction();
+        if (session.getTransaction().isActive()){
+            session.getTransaction().commit();
+        }
+        session.beginTransaction();
 //        HQL
-        Query query = session.createQuery("from Computador");
+        Query query = session.createQuery("from Padre");
         return query.list();      
     }
     

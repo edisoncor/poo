@@ -19,6 +19,13 @@ public class Computador {
     public Computador() {
     }
 
+    public Computador(String marca, String modelo, Float peso) {
+        this.marca = marca;
+        this.modelo = modelo;
+        this.peso = peso;
+    }
+
+    
     public Computador(int id, String marca, String modelo, Float peso) {
         this.id = id;
         this.marca = marca;
@@ -58,6 +65,11 @@ public class Computador {
 
     public void setPeso(Float peso) {
         this.peso = peso;
+    }
+
+    @Override
+    public String toString() {
+        return "\n Computador{" + "id=" + id + ", marca=" + marca + ", modelo=" + modelo + ", peso=" + peso + '}';
     }
     
     

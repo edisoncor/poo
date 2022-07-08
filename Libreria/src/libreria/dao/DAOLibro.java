@@ -4,8 +4,9 @@
  */
 package libreria.dao;
 
-import libreria.model.Libro;
+import java.util.List;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 /**
  *
@@ -13,5 +14,12 @@ import org.hibernate.Session;
  */
 public class DAOLibro extends DAOMain{
     
+    public List getList(){
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+//        HQL
+        Query query = session.createQuery("from Libro");
+        return query.list();      
+    }
     
 }
