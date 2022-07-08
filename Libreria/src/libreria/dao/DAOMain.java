@@ -12,15 +12,24 @@ import org.hibernate.Session;
  */
 public class DAOMain {
     
-     public void guardar(Object object){
+     public Object guardar(Object object){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        if (session.getTransaction().isActive()){
+            session.getTransaction().commit();
+            session = HibernateUtil.getSessionFactory().getCurrentSession();
+        }
         session.beginTransaction();
-        session.save(object);
+        Object object1 = session.save(object);
         session.getTransaction().commit();
+        return object1;
     }
     
      public void guardarOActualizar(Object object){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        if (session.getTransaction().isActive()){
+            session.getTransaction().commit();
+            session = HibernateUtil.getSessionFactory().getCurrentSession();
+        }
         session.beginTransaction();
         session.saveOrUpdate(object);
         session.getTransaction().commit();
@@ -28,6 +37,10 @@ public class DAOMain {
      
       public void eliminar(Object object){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        if (session.getTransaction().isActive()){
+            session.getTransaction().commit();
+            session = HibernateUtil.getSessionFactory().getCurrentSession();
+        }
         session.beginTransaction();
         session.delete(object);
         session.getTransaction().commit();

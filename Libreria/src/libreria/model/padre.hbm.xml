@@ -4,14 +4,15 @@
  "http://hibernate.sourceforge.net/hibernate-mapping-5.3.dtd">  
   
  <hibernate-mapping>  
-  <class name="libreria.model.Libro" table="LIBRO">  
+  <class name="libreria.model.Padre" table="PADRE">  
     
     <id name="id">  
         <generator class="increment"></generator>  
     </id>  
             
-    <property name="autor"></property>  
-    <property name="nombre"></property>  
+    <property name="nombre"></property>
+    
+  
             
   </class>  
             

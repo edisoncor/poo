@@ -8,15 +8,27 @@ package libreria.model;
  *
  * @author edisoncor
  */
-public class Libro {
+public class Hijo {
     
     private int id;
     
-    private String autor;
     private String nombre;
+    
+    private Padre padre;
 
-    public Libro() {
+    public Hijo() {
     }
+
+    public Hijo(String nombre, Padre padre) {
+        this.nombre = nombre;
+        this.padre = padre;
+    }
+
+    public Hijo(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    
 
     public int getId() {
         return id;
@@ -24,15 +36,6 @@ public class Libro {
 
     public void setId(int id) {
         this.id = id;
-    }
-    
-    
-    public String getAutor() {
-        return autor;
-    }
-
-    public void setAutor(String autor) {
-        this.autor = autor;
     }
 
     public String getNombre() {
@@ -43,11 +46,15 @@ public class Libro {
         this.nombre = nombre;
     }
 
-    @Override
-    public String toString() {
-        return "\n Libro{" + "id=" + id + ", autor=" + autor + ", nombre=" + nombre + '}';
+    public Padre getPadre() {
+        return padre;
     }
 
+    public void setPadre(Padre padre) {
+        this.padre = padre;
+    }
+    
+    
     
     
 }

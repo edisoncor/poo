@@ -29,6 +29,8 @@
         
         <mapping resource="libreria/model/libro.hbm.xml"/>
         <mapping resource="libreria/model/computador.hbm.xml"/>
+        <mapping resource="libreria/model/padre.hbm.xml"/>
+        <mapping resource="libreria/model/hijo.hbm.xml"/>
     </session-factory>  
   
 </hibernate-configuration>  
