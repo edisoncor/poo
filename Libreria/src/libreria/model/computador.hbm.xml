@@ -7,7 +7,7 @@
   <class name="libreria.model.Computador" table="COMPUTADOR">  
     
     <id name="id">  
-        <generator class="native"></generator>  
+        <generator class="increment"></generator>  
     </id>  
             
     <property name="marca"></property>  
